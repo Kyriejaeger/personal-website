@@ -73,16 +73,55 @@
     });
   }
 
-  // 轮播（支持页面内多个 [data-carousel]）
+  // 轮播：仅加载当前张与相邻张，减轻手机流量与首屏压力
+  function loadSlideImage(slide) {
+    if (!slide) return;
+    var img = slide.querySelector("img");
+    if (!img) return;
+    var url = img.getAttribute("data-src");
+    if (!url || img.getAttribute("src")) return;
+    img.setAttribute("src", url);
+    img.removeAttribute("data-src");
+    slide.classList.add("is-loading");
+    img.addEventListener(
+      "load",
+      function () {
+        slide.classList.remove("is-loading");
+      },
+      { once: true }
+    );
+    img.addEventListener(
+      "error",
+      function () {
+        slide.classList.remove("is-loading");
+      },
+      { once: true }
+    );
+  }
+
+  function preloadAround(slides, center) {
+    var n = slides.length;
+    if (!n) return;
+    loadSlideImage(slides[center]);
+    loadSlideImage(slides[(center + 1) % n]);
+    loadSlideImage(slides[(center - 1 + n) % n]);
+  }
+
   function initCarousel(root) {
     var slides = Array.prototype.slice.call(root.querySelectorAll(".carousel__slide"));
     var prevBtn = root.querySelector(".carousel__btn--prev");
     var nextBtn = root.querySelector(".carousel__btn--next");
     var dotsWrap = root.querySelector(".carousel__dots");
     var index = 0;
+    var started = false;
 
-    function show(i) {
-      index = (i + slides.length) % slides.length;
+    function startCarousel() {
+      if (started) return;
+      started = true;
+      preloadAround(slides, index);
+    }
+
+    function updateUI() {
       slides.forEach(function (s, j) {
         s.classList.toggle("is-active", j === index);
       });
@@ -94,6 +133,32 @@
       }
     }
 
+    function show(i, fromUser) {
+      index = (i + slides.length) % slides.length;
+      updateUI();
+      if (started || fromUser) {
+        if (!started) started = true;
+        preloadAround(slides, index);
+      }
+    }
+
+    if ("IntersectionObserver" in window) {
+      var carouselIo = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              startCarousel();
+              carouselIo.unobserve(root);
+            }
+          });
+        },
+        { rootMargin: "120px 0px", threshold: 0.01 }
+      );
+      carouselIo.observe(root);
+    } else {
+      startCarousel();
+    }
+
     if (dotsWrap && slides.length) {
       slides.forEach(function (_, j) {
         var b = document.createElement("button");
@@ -102,31 +167,33 @@
         b.setAttribute("role", "tab");
         b.setAttribute("aria-label", "第 " + (j + 1) + " 张");
         b.addEventListener("click", function () {
-          show(j);
+          show(j, true);
         });
         dotsWrap.appendChild(b);
       });
-      show(0);
+      updateUI();
+    } else if (slides.length) {
+      updateUI();
     }
 
     if (prevBtn) {
       prevBtn.addEventListener("click", function () {
-        show(index - 1);
+        show(index - 1, true);
       });
     }
     if (nextBtn) {
       nextBtn.addEventListener("click", function () {
-        show(index + 1);
+        show(index + 1, true);
       });
     }
 
     root.addEventListener("keydown", function (e) {
       if (e.key === "ArrowLeft") {
         e.preventDefault();
-        show(index - 1);
+        show(index - 1, true);
       } else if (e.key === "ArrowRight") {
         e.preventDefault();
-        show(index + 1);
+        show(index + 1, true);
       }
     });
   }

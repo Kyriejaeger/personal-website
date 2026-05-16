@@ -479,6 +479,37 @@ main {
   object-position: center;
 }
 
+.carousel__slide.is-loading img:not([src]) {
+  visibility: hidden;
+}
+
+.carousel__slide.is-loading::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+  border: 3px solid rgba(43, 127, 212, 0.2);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: carousel-spin 0.7s linear infinite;
+}
+
+@keyframes carousel-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel__slide.is-loading::after {
+    animation: none;
+    border-top-color: rgba(43, 127, 212, 0.35);
+  }
+}
+
 .carousel__btn {
   position: absolute;
   top: 50%;
