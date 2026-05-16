@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>刘俊逸 · 个人主页</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <nav class="nav" aria-label="主导航">
+        <a class="nav__brand" href="#home">刘俊逸</a>
+        <button
+          class="nav__toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="nav-menu"
+        >
+          <span class="nav__toggle-bar"></span>
+          <span class="nav__toggle-bar"></span>
+          <span class="nav__toggle-bar"></span>
+          <span class="visually-hidden">打开菜单</span>
+        </button>
+        <ul class="nav__menu" id="nav-menu">
+          <li><a class="nav__link" href="#home">首页</a></li>
+          <li><a class="nav__link" href="#about">关于我</a></li>
+          <li><a class="nav__link" href="#portfolio">作品集</a></li>
+          <li><a class="nav__link" href="#contact">联系方式</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <!-- 首屏 -->
+      <section class="section section--hero card reveal" id="home">
+        <div class="hero">
+          <div class="hero__text">
+            <p class="hero__eyebrow">你好，我是</p>
+            <h1 class="hero__title">刘俊逸</h1>
+            <p class="hero__subtitle">
+              每个人都是他自己的家乡，<br />
+              心灵之外，皆是异乡
+            </p>
+            <p class="hero__desc hero__desc--dense">
+              已飞0国|以梦游国家40+|中中混血|中国留宿生|北科大通信工程本科生offer|淘宝、京东资深买手|蜜雪冰城品鉴师|国家级身份证持有者|家中嫡长子|熟练掌握汉语|前bilibili大会员
+            </p>
+            <div class="hero__jumps" role="navigation" aria-label="页面快捷跳转">
+              <a class="btn btn--primary hero__jump" href="#about">关于我</a>
+              <a class="btn btn--primary hero__jump" href="#gallery">精彩瞬间</a>
+              <a class="btn btn--primary hero__jump" href="#zhiyuan">志愿风采</a>
+              <a class="btn btn--primary hero__jump" href="#portfolio">作品集</a>
+              <a class="btn btn--primary hero__jump" href="#contact">联系方式</a>
+            </div>
+          </div>
+          <div class="hero__visual">
+            <div class="avatar-ring">
+              <img
+                class="avatar"
+                src="images/证件照 蓝底.jpg"
+                width="280"
+                height="280"
+                alt="刘俊逸证件照"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 关于我 -->
+      <section class="section card reveal" id="about">
+        <h2 class="section__title">关于我</h2>
+        <div class="section__lead">
+          <p>
+            我是刘俊逸，来自重庆，目前是北科大通信工程大一学生。我平常喜欢摄影、打篮球、看电影、听歌，比较擅长画画。
+          </p>
+          <p>
+            对于拍照我不专业，但会基本的构图与调色；我最喜欢的球星是凯里欧文，他运球的风格吸引住了我；我最爱的歌手是梁博，最喜欢的歌是他的《男孩》。我的画风格很多，自然、建筑、人物都有。
+          </p>
+        </div>
+        <div class="tag-row" aria-label="核心技能与兴趣">
+          <span class="tag">摄影</span>
+          <span class="tag">篮球</span>
+          <span class="tag">影迷</span>
+          <span class="tag">通信</span>
+        </div>
+      </section>
+
+      <!-- 动态展示 / 轮播 -->
+      <section class="section card reveal" id="gallery" aria-labelledby="gallery-title">
+        <h2 class="section__title" id="gallery-title">精彩瞬间</h2>
+        <div class="carousel" data-carousel tabindex="0" aria-roledescription="carousel">
+          <div class="carousel__viewport">
+            <ul class="carousel__track">
+              <li class="carousel__slide is-active">
+                <img src="images/自拍 铁轨.jpg" alt="自拍·铁轨" width="960" height="540" loading="lazy" />
+              </li>
+              <li class="carousel__slide">
+                <img src="images/自拍 缙云山微笑.jpg" alt="自拍·缙云山微笑" width="960" height="540" loading="lazy" />
+              </li>
+              <li class="carousel__slide">
+                <img src="images/新生杯 (2).jpg" alt="新生杯" width="960" height="540" loading="lazy" />
+              </li>
+              <li class="carousel__slide">
+                <img src="images/马拉松 (2).jpg" alt="马拉松" width="960" height="540" loading="lazy" />
+              </li>
+              <li class="carousel__slide">
+                <img src="images/新生杯 (1).jpg" alt="新生杯" width="960" height="540" loading="lazy" />
+              </li>
+            </ul>
+          </div>
+          <button class="carousel__btn carousel__btn--prev" type="button" aria-label="上一张">
+            <span aria-hidden="true">‹</span>
+          </button>
+          <button class="carousel__btn carousel__btn--next" type="button" aria-label="下一张">
+            <span aria-hidden="true">›</span>
+          </button>
+          <div class="carousel__dots" role="tablist" aria-label="选择幻灯片"></div>
+        </div>
+      </section>
+
+      <!-- 志愿风采（与精彩瞬间相同的轮播版式） -->
+      <section class="section card reveal" id="zhiyuan" aria-labelledby="zhiyuan-title">
+        <h2 class="section__title" id="zhiyuan-title">志愿风采</h2>
+        <div class="carousel" data-carousel tabindex="0" aria-roledescription="carousel">
+          <div class="carousel__viewport">
+            <ul class="carousel__track">
+              <li class="carousel__slide is-active">
+                <img src="images/志愿 (1).jpg" alt="志愿活动 1" width="960" height="540" loading="lazy" />
+              </li>
+              <li class="carousel__slide">
+                <img src="images/志愿 (2).jpg" alt="志愿活动 2" width="960" height="540" loading="lazy" />
+              </li>
+              <li class="carousel__slide">
+                <img src="images/志愿 (3).jpg" alt="志愿活动 3" width="960" height="540" loading="lazy" />
+              </li>
+              <li class="carousel__slide">
+                <img src="images/志愿 (4).jpg" alt="志愿活动 4" width="960" height="540" loading="lazy" />
+              </li>
+            </ul>
+          </div>
+          <button class="carousel__btn carousel__btn--prev" type="button" aria-label="上一张">
+            <span aria-hidden="true">‹</span>
+          </button>
+          <button class="carousel__btn carousel__btn--next" type="button" aria-label="下一张">
+            <span aria-hidden="true">›</span>
+          </button>
+          <div class="carousel__dots" role="tablist" aria-label="选择幻灯片"></div>
+        </div>
+      </section>
+
+      <!-- 作品集：影像 + 绘画 -->
+      <section class="section card reveal" id="portfolio">
+        <h2 class="section__title">作品集</h2>
+
+        <h3 class="portfolio-section__title" id="portfolio-photo">影像作品</h3>
+        <div class="carousel portfolio-carousel" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="影像作品">
+          <div class="carousel__viewport">
+            <ul class="carousel__track">
+              <li class="carousel__slide is-active"><img src="images/北海公园1.jpg" alt="北海公园" width="960" height="540" loading="lazy" /></li>
+              <li class="carousel__slide"><img src="images/大同古城建筑 (1).jpg" alt="大同古城建筑" width="960" height="540" loading="lazy" /></li>
+              <li class="carousel__slide"><img src="images/大同古城建筑 (2).jpg" alt="大同古城建筑" width="960" height="540" loading="lazy" /></li>
+              <li class="carousel__slide"><img src="images/大同古城建筑 (3).jpg" alt="大同古城建筑" width="960" height="540" loading="lazy" /></li>
+              <li class="carousel__slide"><img src="images/大同古城建筑 (4).jpg" alt="大同古城建筑" width="960" height="540" loading="lazy" /></li>
+              <li class="carousel__slide"><img src="images/大同石佛 (1).jpg" alt="大同石佛" width="960" height="540" loading="lazy" /></li>
+              <li class="carousel__slide"><img src="images/大同石佛 (1).png" alt="大同石佛" width="960" height="540" loading="lazy" /></li>
+              <li class="carousel__slide"><img src="images/大同石佛 (2).jpg" alt="大同石佛" width="960" height="540" loading="lazy" /></li>
+              <li class="carousel__slide"><img src="images/都江堰 (1).jpg" alt="都江堰" width="960" height="540" loading="lazy" /></li>
+              <li class="carousel__slide"><img src="images/都江堰 (2).jpg" alt="都江堰" width="960" height="540" loading="lazy" /></li>
+              <li class="carousel__slide"><img src="images/都江堰 (3).jpg" alt="都江堰" width="960" height="540" loading="lazy" /></li>
+              <li class="carousel__slide"><img src="images/故宫角楼.jpg" alt="故宫角楼" width="960" height="540" loading="lazy" /></li>
+              <li class="carousel__slide"><img src="images/香山 (1).jpg" alt="香山" width="960" height="540" loading="lazy" /></li>
+              <li class="carousel__slide"><img src="images/香山 (2).jpg" alt="香山" width="960" height="540" loading="lazy" /></li>
+              <li class="carousel__slide"><img src="images/颐和园 穿透视角 无船.jpg" alt="颐和园·穿透视角" width="960" height="540" loading="lazy" /></li>
+              <li class="carousel__slide"><img src="images/颐和园 横幅江水.jpg" alt="颐和园·横幅江水" width="960" height="540" loading="lazy" /></li>
+              <li class="carousel__slide"><img src="images/颐和园 竖屏江水.jpg" alt="颐和园·竖屏江水" width="960" height="540" loading="lazy" /></li>
+              <li class="carousel__slide"><img src="images/大雁塔.jpg" alt="大雁塔" width="960" height="540" loading="lazy" /></li>
+              <li class="carousel__slide"><img src="images/大唐芙蓉园.jpg" alt="大唐芙蓉园" width="960" height="540" loading="lazy" /></li>
+              <li class="carousel__slide"><img src="images/春天的地铁.jpg" alt="春天的地铁" width="960" height="540" loading="lazy" /></li>
+            </ul>
+          </div>
+          <button class="carousel__btn carousel__btn--prev" type="button" aria-label="上一张">
+            <span aria-hidden="true">‹</span>
+          </button>
+          <button class="carousel__btn carousel__btn--next" type="button" aria-label="下一张">
+            <span aria-hidden="true">›</span>
+          </button>
+          <div class="carousel__dots" role="tablist" aria-label="影像作品幻灯片"></div>
+        </div>
+
+        <h3 class="portfolio-section__title" id="portfolio-art">绘画作品</h3>
+        <div class="carousel portfolio-carousel" data-carousel tabindex="0" aria-roledescription="carousel" aria-label="绘画作品">
+          <div class="carousel__viewport">
+            <ul class="carousel__track">
+              <li class="carousel__slide is-active"><img src="images/艾伦 儿时 正脸 上色.jpg" alt="艾伦·儿时·正脸上色" width="960" height="540" loading="lazy" /></li>
+              <li class="carousel__slide"><img src="images/超大型巨人.jpg" alt="超大型巨人" width="960" height="540" loading="lazy" /></li>
+              <li class="carousel__slide"><img src="images/故宫角楼.jpg" alt="故宫角楼（绘画）" width="960" height="540" loading="lazy" /></li>
+              <li class="carousel__slide"><img src="images/艾伦 儿时 多色.jpg" alt="艾伦·儿时·多色" width="960" height="540" loading="lazy" /></li>
+              <li class="carousel__slide"><img src="images/艾伦 少年 多色.jpg" alt="艾伦·少年·多色" width="960" height="540" loading="lazy" /></li>
+              <li class="carousel__slide"><img src="images/艾伦儿时侧脸.jpg" alt="艾伦儿时侧脸" width="960" height="540" loading="lazy" /></li>
+              <li class="carousel__slide"><img src="images/两棵树 (1).jpg" alt="两棵树" width="960" height="540" loading="lazy" /></li>
+              <li class="carousel__slide"><img src="images/河滩小桥.jpg" alt="河滩小桥" width="960" height="540" loading="lazy" /></li>
+            </ul>
+          </div>
+          <button class="carousel__btn carousel__btn--prev" type="button" aria-label="上一张">
+            <span aria-hidden="true">‹</span>
+          </button>
+          <button class="carousel__btn carousel__btn--next" type="button" aria-label="下一张">
+            <span aria-hidden="true">›</span>
+          </button>
+          <div class="carousel__dots" role="tablist" aria-label="绘画作品幻灯片"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer reveal" id="contact">
+      <div class="footer__inner card">
+        <div class="footer__row">
+          <div>
+            <h2 class="footer__title">联系方式</h2>
+            <p class="footer__text">
+              邮箱：<a href="mailto:liujunyi_ustb@163.com">liujunyi_ustb@163.com</a>
+            </p>
+            <p class="footer__text">
+              邮箱：<a href="mailto:liujunyi006913@gmail.com">liujunyi006913@gmail.com</a>
+            </p>
+            <p class="footer__text">微信号：kyriejaeger</p>
+            <p class="footer__text subtle">欢迎邮件联系；也可通过微信添加我。</p>
+          </div>
+        </div>
+        <p class="footer__copy">别选好走的路，走好选择的路</p>
+      </div>
+    </footer>
+
+    <button class="back-top" type="button" aria-label="返回顶部" tabindex="-1" aria-hidden="true">
+      <span aria-hidden="true">↑</span>
+    </button>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
